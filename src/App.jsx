@@ -15,11 +15,15 @@ function App() {
         following:100
     });
 
+    const changeAvatar = url => {
+        setUser({...user, avatar: url});
+    }
+
   return (
     <>
       <div className={'app'}>
           <TwitterContext.Provider value={{
-              user, stats
+              user, stats, changeAvatar
           }}>
           <Navigation />
           <Body />
