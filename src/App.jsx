@@ -16,7 +16,7 @@ function App() {
     });
 
     const changeAvatar = url => {
-        setUser({...user, avatar: url});
+        setUser({...user, avatar: url || user.avatar});
     }
 
   return (
