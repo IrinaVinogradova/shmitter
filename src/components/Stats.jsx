@@ -4,23 +4,38 @@ import {TwitterContext} from "../utils/context.js";
 
 
 const Stats = () => {
-    const{user, stats} = useContext(TwitterContext);
+    const {user, stats, changeStats} = useContext(TwitterContext);
+
+
     return (
         <div className={'user-stats'}>
             <div>
-                <Avatar  />
+                <Avatar/>
                 {user.name}
             </div>
             <div className={'stats'}>
-                <div>
+                <div
+                    onClick={() => changeStats('followers', 1)}
+                    onContextMenu={(e) => {
+                        e.preventDefault();
+                        changeStats('followers', -1);
+                    }}
+                >
                     Followers: {stats.followers}
                 </div>
-                <div>
+                <div
+                    onClick={() => changeStats('following', 1)}
+                    onContextMenu={(e) => {
+                        e.preventDefault();
+                        changeStats('following', -1);
+                    }}
+                >
                     Following: {stats.following}
                 </div>
             </div>
         </div>
     );
 };
+
 
 export default Stats;
